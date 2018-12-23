@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
-  title = 'rbacAdmin';
+  switchTheme() {
+    console.log('switchTheme');
+  }
 }
