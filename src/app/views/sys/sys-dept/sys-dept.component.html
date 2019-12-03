@@ -1,0 +1,60 @@
+<form>
+  <mat-toolbar color="white" class="auto-height">
+    <mat-form-field class="fill-remaining-space space-right">
+      <input matInput placeholder="search by key word" autocomplete="off">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="button">Search</button>
+    <button mat-raised-button color="primary" type="button" class="space-left" (click)="create()">Create</button>
+  </mat-toolbar>
+</form>
+
+<div class="table-container">
+  <table mat-table [dataSource]="list" class="mat-elevation-z8" width="100%">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>Id</th>
+      <td mat-cell *matCellDef="let dept">{{dept.id}}</td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let dept">{{dept.name}}</td>
+    </ng-container>
+    <ng-container matColumnDef="level">
+      <th mat-header-cell *matHeaderCellDef>Level</th>
+      <td mat-cell *matCellDef="let dept">{{dept.level}}</td>
+    </ng-container>
+    <ng-container matColumnDef="parent_id">
+      <th mat-header-cell *matHeaderCellDef>Parent_id</th>
+      <td mat-cell *matCellDef="let dept">{{dept.parent_id}}</td>
+    </ng-container>
+    <ng-container matColumnDef="seq">
+      <th mat-header-cell *matHeaderCellDef>Seq</th>
+      <td mat-cell *matCellDef="let dept">{{dept.seq}}</td>
+    </ng-container>
+    <ng-container matColumnDef="remark">
+      <th mat-header-cell *matHeaderCellDef>Remark</th>
+      <td mat-cell *matCellDef="let dept">{{dept.remark}}</td>
+    </ng-container>
+    <ng-container matColumnDef="operator">
+      <th mat-header-cell *matHeaderCellDef>Operator</th>
+      <td mat-cell *matCellDef="let dept">{{dept.operator}}</td>
+    </ng-container>
+    <ng-container matColumnDef="operator_time">
+      <th mat-header-cell *matHeaderCellDef>Operator_time</th>
+      <td mat-cell *matCellDef="let dept">{{dept.operator_time}}</td>
+    </ng-container>
+    <ng-container matColumnDef="operator_ip">
+      <th mat-header-cell *matHeaderCellDef>Operator_ip</th>
+      <td mat-cell *matCellDef="let dept">{{dept.operator_ip}}</td>
+    </ng-container>
+    <ng-container matColumnDef="operate">
+      <th mat-header-cell *matHeaderCellDef>Operate</th>
+      <td mat-cell *matCellDef="let dept">
+        <button mat-raised-button color="primary" (click)="edit(dept)">Edit</button>
+        <button mat-raised-button color="warn" (click)="destroy(dept)">Remove</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

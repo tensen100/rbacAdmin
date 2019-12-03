@@ -1,34 +1,33 @@
-import {NgModule, Optional, SkipSelf} from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
-import {MatIconRegistry} from '@angular/material';
-import {DomSanitizer} from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {AppRoutingModule} from '../app-routing.module';
-import {ServiceModule} from '../service/service.module';
+import { AppRoutingModule } from '../app-routing.module';
+import { ServiceModule } from '../service/service.module';
 
-import {HeaderComponent} from './header/header.component';
-import {FooterComponent} from './footer/footer.component';
-import {SidebarComponent} from './sidebar/sidebar.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
-import {loadSvgResources} from '../utils/svg.util';
-import {AppStoreModule} from '../reducer';
-import {AppEffectsModule} from '../effects';
-import {BASE_CONFIG, HOST_URL} from '../config/base.config';
+import { loadSvgResources } from '../utils';
+import { ShareModule } from '../share/share.module';
+
+import 'hammerjs';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    SidebarComponent
+    SidebarComponent,
   ],
   imports: [
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AppStoreModule,
-    AppEffectsModule,
+    ShareModule,
     ServiceModule.forRoot()
   ],
   exports: [
@@ -38,14 +37,6 @@ import {BASE_CONFIG, HOST_URL} from '../config/base.config';
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [
-    {
-      provide: 'BASE_CONFIG',
-      useValue: {
-        url: HOST_URL
-      }
-    }
-  ]
 })
 export class CoreModule {
   // coreModule 只加载一次
